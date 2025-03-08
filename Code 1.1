@@ -1,0 +1,152 @@
+import random
+
+class HistoricalEvent:
+    def __init__(self, date, description):
+        self.date = date
+        self.description = description
+
+class HistoryGame:
+    def __init__(self):
+        self.events = []
+        self._load_events()
+        self.score = 0  # Ініціалізуємо рахунок
+
+    def _load_events(self):
+        self.events.append(HistoricalEvent("1 млн років тому", "Поява давніх людей на теренах України"))
+        self.events.append(HistoricalEvent("IX–VII ст. до н. е.", "Розселення кіммерійців у степовій і частково лісостеповій зонах України"))
+        self.events.append(HistoricalEvent("VIII–VI ст. до н. е.", "Велика грецька колонізація"))
+        self.events.append(HistoricalEvent("VII–III ст. до н. е. (ІІІ н. е.)", "Панування скіфів у Північному Причорномор’ї"))
+        self.events.append(HistoricalEvent("VII–V ст. до н. е.", "Грецька колонізація Північного Причорномор’я"))
+        self.events.append(HistoricalEvent("IV – середина III тис. до н. е.", "Розселення трипільської і середньостогівської культур"))
+        self.events.append(HistoricalEvent("480 р. до н. е.", "Утворення Боспорського царства"))
+        self.events.append(HistoricalEvent("III ст. до н. е. – ІІІ ст. н. е.", "Розселення сарматів"))
+        self.events.append(HistoricalEvent("III ст.", "Черняхівська культура; готи"))
+        self.events.append(HistoricalEvent("ІV ст.", "Антський союз"))
+        self.events.append(HistoricalEvent("IV–VI ст.", "Велике переселення народів; гуни; Аварський каганат"))
+        self.events.append(HistoricalEvent("Друга половина V – VII ст.", "Велике розселення слов’ян; союзи племен"))
+        self.events.append(HistoricalEvent("V ст.", "Заснування Києва"))
+        self.events.append(HistoricalEvent("Кінець VI ст. – VII ст.", "Князь Кий"))
+        self.events.append(HistoricalEvent("IX ст.", "Утворення Русі-України"))
+        self.events.append(HistoricalEvent("IX–XII ст.", "Княжа доба"))
+        self.events.append(HistoricalEvent("860", "Похід Аскольда на Константинополь"))
+        self.events.append(HistoricalEvent("882", "Об’єднання земель Олегом, початок правління Рюриковичів"))
+        self.events.append(HistoricalEvent("882–912", "Правління князя Олега"))
+        self.events.append(HistoricalEvent("907, 911", "Походи Олега на Візантію"))
+        self.events.append(HistoricalEvent("907, 911, 941, 944", "Походи князів на Константинополь"))
+        self.events.append(HistoricalEvent("912–945", "Правління князя Ігоря"))
+        self.events.append(HistoricalEvent("941, 944", "Походи Ігоря на Візантію"))
+        self.events.append(HistoricalEvent("945", "Повстання деревлян, вбивство Ігоря"))
+        self.events.append(HistoricalEvent("945–964", "Правління княгині Ольги"))
+        self.events.append(HistoricalEvent("946–947", "Реформи Ольги"))
+        self.events.append(HistoricalEvent("957", "Подорож Ольги до Константинополя"))
+        self.events.append(HistoricalEvent("964", "Розгром Хозарського каганату Святославом"))
+        self.events.append(HistoricalEvent("964–972", "Правління Святослава"))
+        self.events.append(HistoricalEvent("967–968, 969–971", "Балканські походи Святослава"))
+        self.events.append(HistoricalEvent("980–1015", "Правління князя Володимира"))
+        self.events.append(HistoricalEvent("988", "Запровадження християнства"))
+        self.events.append(HistoricalEvent("989", "Закладання Десятинної церкви"))
+        self.events.append(HistoricalEvent("1016", "Перша згадка про «Руську правду»"))
+        self.events.append(HistoricalEvent("1017–1037", "Спорудження Софійського собору"))
+        self.events.append(HistoricalEvent("1019", "Битва на р. Альта"))
+        self.events.append(HistoricalEvent("1019–1054", "Князювання Ярослава Мудрого"))
+        self.events.append(HistoricalEvent("1036", "Розгром печенігів Ярославом"))
+        self.events.append(HistoricalEvent("1037–1050", "«Слово про закон і благодать» Іларіона"))
+        self.events.append(HistoricalEvent("1056–1057", "Створення Остромирового Євангелія"))
+        self.events.append(HistoricalEvent("1068", "Поразка на р. Альта, повстання киян"))
+        self.events.append(HistoricalEvent("1072", "Вишгородська нарада, «Правда Ярославичів»"))
+        self.events.append(HistoricalEvent("1073, 1076", "«Ізборник» Святослава"))
+        self.events.append(HistoricalEvent("1073–1078", "Будівництво Успенського собору"))
+        self.events.append(HistoricalEvent("1097", "Любецький з’їзд"))
+        self.events.append(HistoricalEvent("1108–1113", "Будівництво Михайлівського Золотоверхого собору"))
+        self.events.append(HistoricalEvent("1113", "«Повість минулих літ»; правління Володимира Мономаха"))
+        self.events.append(HistoricalEvent("1113–1125", "Князювання Володимира Мономаха"))
+        self.events.append(HistoricalEvent("1115", "Мстиславове Євангеліє"))
+        self.events.append(HistoricalEvent("1125–1132", "Князювання Мстислава Володимировича"))
+        self.events.append(HistoricalEvent("1153–1187", "Правління Ярослава Осмомисла"))
+        self.events.append(HistoricalEvent("1157", "Будівництво Успенського собору в Галичі"))
+        self.events.append(HistoricalEvent("1169", "Спустошення Києва Андрієм Боголюбським"))
+        self.events.append(HistoricalEvent("1185", "Похід Ігоря проти половців"))
+        self.events.append(HistoricalEvent("1187", "Перша згадка назви «Україна»; «Слово о полку Ігоревім»"))
+        self.events.append(HistoricalEvent("1199", "Утворення Галицько-Волинської держави"))
+        self.events.append(HistoricalEvent("1199–1205", "Правління Романа Мстиславича"))
+        self.events.append(HistoricalEvent("1203", "Захоплення Києва Романом Мстиславичем"))
+        self.events.append(HistoricalEvent("1223", "Битва на р. Калка"))
+        self.events.append(HistoricalEvent("1238", "Розгром хрестоносців під Дорогичином"))
+        self.events.append(HistoricalEvent("1238", "Відновлення єдності Галицько-Волинського князівства"))
+        self.events.append(HistoricalEvent("1238–1239", "Вторгнення монголів"))
+        self.events.append(HistoricalEvent("1238–1264", "Правління Данила Романовича"))
+        self.events.append(HistoricalEvent("1240", "Захоплення Києва монголами"))
+        self.events.append(HistoricalEvent("1241", "Вторгнення монголів у Галицько-Волинське князівство"))
+        self.events.append(HistoricalEvent("1245", "Битва біля м. Ярослав"))
+        self.events.append(HistoricalEvent("1245", "Поїздка Данила Галицького до Золотої Орди"))
+        self.events.append(HistoricalEvent("1253", "Коронування Данила Романовича"))
+        self.events.append(HistoricalEvent("1264–1301", "Князювання Лева І Даниловича"))
+        self.events.append(HistoricalEvent("1301–1308", "Правління Юрія І Львовича"))
+        self.events.append(HistoricalEvent("1303", "Заснування Галицької митрополії"))
+        self.events.append(HistoricalEvent("1308–1323", "Князювання Андрія та Лева ІІ"))
+        self.events.append(HistoricalEvent("1325–1340", "Князювання Юрія ІІ Болеслава"))
+        self.events.append(HistoricalEvent("1340", "Боротьба за галицько-волинські землі"))
+        self.events.append(HistoricalEvent("1340–1377", "Князювання Любарта Гедиміновича"))
+        self.events.append(HistoricalEvent("1345–1377", "Князювання Ольгерда"))
+        self.events.append(HistoricalEvent("1349", "Занепад Галицько-Волинської держави"))
+        self.events.append(HistoricalEvent("1359", "Входження Буковини до складу Молдавського князівства"))
+        self.events.append(HistoricalEvent("1362", "Битва на р. Сині Води"))
+        self.events.append(HistoricalEvent("1370", "Захоплення Галичини Угорщиною"))
+        self.events.append(HistoricalEvent("1377–1434", "Князювання Ягайла"))
+        self.events.append(HistoricalEvent("1385", "Кревська унія"))
+        self.events.append(HistoricalEvent("1387", "Захоплення Галичини Польщею"))
+        self.events.append(HistoricalEvent("1392", "Острівська угода"))
+        self.events.append(HistoricalEvent("1392–1430", "Князювання Вітовта"))
+        self.events.append(HistoricalEvent("1410", "Грюнвальдська битва"))
+        self.events.append(HistoricalEvent("1413", "Городельська унія"))
+        self.events.append(HistoricalEvent("1432–1435", "Боротьба за незалежність, Велике князівство Руське"))
+        self.events.append(HistoricalEvent("1434", "Утворення Подільського й Руського воєводств"))
+        self.events.append(HistoricalEvent("1435", "Поразка Свидригайла під Вількомиром"))
+        self.events.append(HistoricalEvent("1447", "Перший напад кримського хана"))
+        self.events.append(HistoricalEvent("1449 (40-ві роки XV ст.)", "Утворення Кримського ханства"))
+        self.events.append(HistoricalEvent("1452", "Ліквідація Волинського князівства"))
+        self.events.append(HistoricalEvent("1471", "Ліквідація Київського князівства"))
+        self.events.append(HistoricalEvent("1475", "Вторгнення турків до Криму"))
+        self.events.append(HistoricalEvent("1478", "Кримське ханство - васал Османської імперії"))
+        self.events.append(HistoricalEvent("1482", "Напад татар на Київ"))
+        self.events.append(HistoricalEvent("1489", "Перша згадка про козаків"))
+        self.events.append(HistoricalEvent("1490–1492", "Повстання Мухи та Борулі"))
+        self.events.append(HistoricalEvent("1503", "Приєднання Чернігово-Сіверщини до Московії"))
+
+    def _give_hint(self, description):
+        words = description.split()
+        hint_length = max(1, len(words) // 4)
+        hint = " ".join(words[:hint_length]) + "..."
+        return hint
+
+    def play(self):
+        print("Вітаємо у грі «Історичні події»!")
+        print("Спробуйте вгадати, що сталося у вказану дату.")
+        print("-" * 40)
+
+        # Перемішуємо події для випадкового порядку
+        random.shuffle(self.events)
+
+        for event in self.events:
+            print(f"Дата: {event.date}")
+            user_answer = input("Ваша відповідь: ")
+
+            if user_answer.lower() in event.description.lower():  # Регістронезалежний, частковий збіг
+                print("Правильно!")
+                self.score += 1
+            else:
+                hint = self._give_hint(event.description)
+                print(f"Неправильно. Підказка: {hint}")
+                user_answer = input("Спробуйте ще раз: ")
+                if user_answer.lower() in event.description.lower():
+                    print("Правильно!")
+                    self.score += 1
+                else:
+                    print(f"Неправильно. Правильна відповідь: {event.description}")
+            print("-" * 40)
+
+        print(f"Гра закінчена! Ваш рахунок: {self.score} / {len(self.events)}")
+
+# Створюємо екземпляр гри та запускаємо її
+game = HistoryGame()
+game.play()
